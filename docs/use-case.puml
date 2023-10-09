@@ -1,0 +1,51 @@
+@startuml Book Hub UCD
+
+left to right direction
+
+' Actors:
+actor "Unregistered User" as unregisteredUser
+actor "Registered User" as registeredUser
+actor "Admin" as admin
+
+' System boundary:
+rectangle "Book Hub" as BookHub {
+    'User - unregistered'
+    usecase "Browse" as browse
+    ' sort, filter
+    usecase "Sort/Filter Books" as filterBooks
+    usecase "Create account" as createAccount
+    usecase "Search books" as searchBooks
+    usecase "Purchase books" as purchaseBooks
+    usecase "Manage cart" as manageCart
+
+    'User - registered'
+    usecase "Review purchase history" as purchaseHistory
+    usecase "Rate book" as rateBook
+    usecase "Manage wishlist" as manageWishlist
+
+
+    'Admin'
+    usecase "Manage user accounts" as manageUsers
+    usecase "Update book details" as manageBooks
+    usecase "Change book price" as manageBookPrice
+}
+
+unregisteredUser <|- registeredUser
+
+' Associations between actors and use cases:
+unregisteredUser -- createAccount
+unregisteredUser -- searchBooks
+unregisteredUser -- filterBooks
+unregisteredUser -- browse
+
+registeredUser -- purchaseBooks
+registeredUser -- purchaseHistory
+registeredUser -- manageWishlist
+registeredUser -- rateBook
+registeredUser -- manageCart
+
+admin -u- manageUsers
+admin -u- manageBooks
+admin -u- manageBookPrice
+
+@enduml

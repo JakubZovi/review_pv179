@@ -1,0 +1,144 @@
+@startuml Book Hub ERD
+
+' !pragma ratio 0.2
+
+skinparam linetype ortho
+hide circles
+
+'Book, Rating, Genre, Author, Publisher'
+entity Book {
+    *Id : int
+    AuthorId : int <<FK>>
+    PublisherId : int <<FK>>
+    RatingId : int <<FK>>
+    PriceId : int <<FK>>
+    ---
+    Name : varchar(255)
+    ISBN : varchar(255)
+    PublicationDate : timestamp
+    Description : varchar(255)
+}
+
+entity Rating {
+    *Id : int
+    UserId : int <<FK>>
+    BookId : int <<FK>>
+    ---
+    Stars : int
+    Review : varchar(1024)
+}
+
+entity Genre {
+    *Id : int
+    ---
+    Name : varchar(255)
+}
+
+entity Genre_Book {
+    *Id: int
+    BookId: int <<FK>>
+    GenreId: int <<FK>>
+    ---
+}
+
+entity Author {
+    *Id : int
+    ---
+    FirstName : varchar(255)
+    LastName : varchar(255)
+    DateOfBirth : timestamp
+    DateOfDeath : timestamp
+}
+
+entity Book_Author {
+    *Id : int
+    AuthorId : int <<FK>>
+    BookId : int <<FK>>
+    ---
+}
+
+entity Publisher {
+    *Id : int
+    ---
+    Name : varchar(255)
+    PhoneNumber : varchar(32)
+    Email : varchar(255)
+}
+
+entity Price {
+    *Id : int
+    BookId : int <<FK>>
+    ---
+    Price : decimal(10,2)
+    Currency : varchar(255)
+    Date : timestamp
+}
+
+'User, Wishlist, Wishlist_Book'
+entity Wishlist {
+    *Id : int
+    UserId : int <<FK>>
+    ---
+    Name : varchar(255)
+}
+
+entity Wishlist_Book {
+    *Id : int
+    WishlistId : int <<FK>>
+    BookId : int <<FK>>
+    ---
+}
+
+entity User {
+    *Id : int
+    ---
+    FirstName : varchar(255)
+    LastName : varchar(255)
+    Gender: varchar(255)
+    Email : varchar(255)
+    PasswordHash : varchar(255)
+    IsAdmin : boolean
+}
+
+'Purchase'
+entity Purchase {
+    *Id : int
+    UserId : int <<FK>>
+    Purchase_BookId: int <<FK>>
+    ---
+    Date : timestamp
+}
+
+entity Purchase_Book {
+    *Id : int
+    ---
+    PurchaseId : int <<FK>>
+    BookId : int <<FK>>
+}
+
+
+Book ||.o{ Wishlist_Book
+Book ||.left.o{ Genre_Book
+
+Book ||...o{ Price
+
+Book_Author }|.up.|| Book
+Author ||.up.o{ Book_Author
+
+
+Genre_Book }o.left.|| Genre
+
+Publisher ||..o{ Book
+
+User ||..o{ Wishlist
+
+Rating }o..|| Book
+Rating }o..|| User
+
+Wishlist_Book ||.o{ Wishlist
+
+Purchase ||..o{ Purchase_Book
+Purchase }o..|| User
+Purchase_Book }o..|| Book
+
+@enduml
