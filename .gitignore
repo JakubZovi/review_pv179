@@ -131,3 +131,8 @@ $RECYCLE.BIN/
 .DS_Store
 
 _NCrunch*
+
+BookHub/obj
+BookHub/.idea
+BookHub/.vs
+
