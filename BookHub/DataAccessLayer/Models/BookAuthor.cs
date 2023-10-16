@@ -1,18 +1,16 @@
+using System.ComponentModel.DataAnnotations.Schema;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+namespace DataAccessLayer.Models;
 
-namespace DataAccessLayer.Models
+public class BookAuthor : BaseEntity
 {
-    public class BookAuthor: BaseEntity
-    {
-        public int AuthorId { get; set; }
-        public int BookId { get; set; }
+    public int AuthorId { get; set; }
 
-        public virtual Author Author { get; set; }
-        public virtual Book Book { get; set; }
-    }
+    [ForeignKey(nameof(AuthorId))]
+    public virtual required Author Author { get; set; }
+    
+    public int BookId { get; set; }
+    
+    [ForeignKey(nameof(BookId))]
+    public virtual required Book Book { get; set; }
 }

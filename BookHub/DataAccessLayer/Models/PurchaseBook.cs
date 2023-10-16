@@ -2,15 +2,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataAccessLayer.Models;
 
-public class WishlistBook : BaseEntity
+public class PurchaseBook
 {
-    public int WishlistId { get; set; }
-    
-    [ForeignKey(nameof(WishlistId))]
-    public virtual required Wishlist Wishlist { get; set; }
-    
     public int BookId { get; set; }
     
     [ForeignKey(nameof(BookId))]
     public virtual required Book Book { get; set; }
+    
+    public int PurchaseId { get; set; }
+    
+    [ForeignKey(nameof(PurchaseId))]
+    public virtual required Purchase Purchase { get; set; } 
+    
+    
 }

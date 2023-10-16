@@ -1,8 +1,7 @@
-﻿namespace DataAccessLayer.Models
+﻿namespace DataAccessLayer.Models;
+
+public class Genre : BaseEntity
 {
-    public class Genre : BaseEntity
-    {
-        public string Name { get; set; }
-        public virtual IEnumerable<GenreBook> GenreBooks { get; set; }
-    }
+    public required string Name { get; set; }
+    public virtual IEnumerable<GenreBook>? GenreBooks { get; set; }
 }

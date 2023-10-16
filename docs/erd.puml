@@ -10,7 +10,6 @@ entity Book {
     *Id : int
     AuthorId : int <<FK>>
     PublisherId : int <<FK>>
-    RatingId : int <<FK>>
     PriceId : int <<FK>>
     ---
     Name : varchar(255)
@@ -104,7 +103,6 @@ entity User {
 entity Purchase {
     *Id : int
     UserId : int <<FK>>
-    Purchase_BookId: int <<FK>>
     ---
     Date : timestamp
 }
