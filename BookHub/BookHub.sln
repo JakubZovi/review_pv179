@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookHub", "BookHub\BookHub.csproj", "{B4BBEE34-FDEB-41F2-BE73-0E3352CFA95C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{A8883845-E3B5-4807-88C3-5055F57CE639}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B4BBEE34-FDEB-41F2-BE73-0E3352CFA95C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4BBEE34-FDEB-41F2-BE73-0E3352CFA95C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4BBEE34-FDEB-41F2-BE73-0E3352CFA95C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8883845-E3B5-4807-88C3-5055F57CE639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8883845-E3B5-4807-88C3-5055F57CE639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8883845-E3B5-4807-88C3-5055F57CE639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8883845-E3B5-4807-88C3-5055F57CE639}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
