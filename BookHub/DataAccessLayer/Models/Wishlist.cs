@@ -11,5 +11,5 @@ public class Wishlist : BaseEntity
     [ForeignKey(nameof(UserId))]
     public virtual required User User { get; set; }
     
-    public List<WishlistBook>? WishlistBooks { get; set; }
+    public List<Book>? Books { get; set; }
 }

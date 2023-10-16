@@ -6,8 +6,9 @@ public class Purchase : BaseEntity
 {
     public int UserId { get; set; }
 
-    [ForeignKey(nameof(UserId))]
-    public virtual required User User { get; set; }
+    [ForeignKey(nameof(UserId))] public virtual required User User { get; set; }
 
     public DateTime Date { get; set; }
+
+    public List<PurchaseBook> PurchaseBooks { get; set; }
 }
