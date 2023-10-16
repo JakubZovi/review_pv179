@@ -1,9 +1,15 @@
-namespace DefaultNamespace;
+using System.ComponentModel.DataAnnotations.Schema;
 
-public class Wishlist:BaseEntity
+namespace DataAccessLayer.Models;
+
+public class Wishlist : BaseEntity
 {
-    public string Name { get; set; }
+    public required string Name { get; set; }
+     
     public int UserId { get; set; }
-    public virtual? User User { get; set; }
-    public List<WishlistBook> WishlistBooks { get; set; }
+    
+    [ForeignKey(nameof(UserId))]
+    public virtual required User User { get; set; }
+    
+    public List<WishlistBook>? WishlistBooks { get; set; }
 }

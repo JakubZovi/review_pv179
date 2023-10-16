@@ -1,16 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DataAccessLayer.Models
+namespace DataAccessLayer.Models;
+
+public class Price : BaseEntity
 {
-    public class Price : BaseEntity
-    {
-        public int BookId { get; set; }
-        public decimal PriceValue { get; set; }
-        public string Currency { get; set; }
-        public DateTime Date { get; set; }
-    }
+    public int BookId { get; set; }
+    
+    [ForeignKey(nameof(BookId))]
+    public virtual required Book Book { get; set; }
+    
+    public decimal PriceValue { get; set; }
+    
+    public required string Currency { get; set; }
+    
+    public DateTime Date { get; set; }
 }
