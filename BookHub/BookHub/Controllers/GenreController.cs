@@ -9,9 +9,9 @@ namespace BookHub.Controllers;
 [ApiController]
 public class GenreController : ControllerBase
 {
-    private readonly BookHubDBContext _context;
+    private readonly BookHubDbContext _context;
 
-    public GenreController(BookHubDBContext context)
+    public GenreController(BookHubDbContext context)
     {
         _context = context;
     }

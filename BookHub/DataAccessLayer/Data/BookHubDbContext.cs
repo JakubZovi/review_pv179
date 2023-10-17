@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Data;
 
-public class BookHubDBContext : DbContext
+public class BookHubDbContext : DbContext
 {
     public virtual required DbSet<Author> Authors { get; set; }
     public virtual required DbSet<Book> Books { get; set; }

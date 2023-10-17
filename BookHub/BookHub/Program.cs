@@ -12,7 +12,7 @@ builder.Services.AddControllers().AddJsonOptions(
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<BookHubDBContext>();
+builder.Services.AddDbContext<BookHubDbContext>();
 
 var app = builder.Build();
 

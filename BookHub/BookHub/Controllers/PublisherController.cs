@@ -9,9 +9,9 @@ namespace BookHub.Controllers;
 [ApiController]
 public class PublisherController : ControllerBase
 {
-    private readonly BookHubDBContext _context;
+    private readonly BookHubDbContext _context;
 
-    public PublisherController(BookHubDBContext context)
+    public PublisherController(BookHubDbContext context)
     {
         _context = context;
     }
