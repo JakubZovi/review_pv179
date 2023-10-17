@@ -1,7 +1,7 @@
 using DataAccessLayer.Data;
+using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using DataAccessLayer.Models;
 
 namespace BookHub.Controllers;
 
@@ -29,10 +29,7 @@ public class GenreController : ControllerBase
     {
         var genre = await _context.Genres.FindAsync(id);
 
-        if (genre == null)
-        {
-            return NotFound();
-        }
+        if (genre == null) return NotFound();
 
         return genre;
     }
@@ -42,10 +39,7 @@ public class GenreController : ControllerBase
     [HttpPut("{id:int}")]
     public async Task<IActionResult> PutGenre(int id, Genre genre)
     {
-        if (id != genre.Id)
-        {
-            return BadRequest();
-        }
+        if (id != genre.Id) return BadRequest();
 
         _context.Entry(genre).State = EntityState.Modified;
 
@@ -56,13 +50,8 @@ public class GenreController : ControllerBase
         catch (DbUpdateConcurrencyException)
         {
             if (!GenreExists(id))
-            {
                 return NotFound();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
 
         return NoContent();
@@ -84,10 +73,7 @@ public class GenreController : ControllerBase
     public async Task<IActionResult> DeleteGenre(int id)
     {
         var genre = await _context.Genres.FindAsync(id);
-        if (genre == null)
-        {
-            return NotFound();
-        }
+        if (genre == null) return NotFound();
 
         _context.Genres.Remove(genre);
         await _context.SaveChangesAsync();

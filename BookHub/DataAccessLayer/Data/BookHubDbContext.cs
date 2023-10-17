@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Models;
+﻿using System.Diagnostics;
+using DataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Data;
@@ -22,7 +23,7 @@ public class BookHubDbContext : DbContext
 
         optionsBuilder
             .UseSqlite($"Data Source={dbPath}")
-            .LogTo(s => System.Diagnostics.Debug.WriteLine(s))
+            .LogTo(s => Debug.WriteLine(s))
             .UseLazyLoadingProxies();
     }
 

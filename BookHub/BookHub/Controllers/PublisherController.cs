@@ -1,7 +1,7 @@
 using DataAccessLayer.Data;
+using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using DataAccessLayer.Models;
 
 namespace BookHub.Controllers;
 
@@ -29,10 +29,7 @@ public class PublisherController : ControllerBase
     {
         var publisher = await _context.Publishers.FindAsync(id);
 
-        if (publisher == null)
-        {
-            return NotFound();
-        }
+        if (publisher == null) return NotFound();
 
         return publisher;
     }
@@ -42,10 +39,7 @@ public class PublisherController : ControllerBase
     [HttpPut("{id:int}")]
     public async Task<IActionResult> PutPublisher(int id, Publisher publisher)
     {
-        if (id != publisher.Id)
-        {
-            return BadRequest();
-        }
+        if (id != publisher.Id) return BadRequest();
 
         _context.Entry(publisher).State = EntityState.Modified;
 
@@ -56,13 +50,8 @@ public class PublisherController : ControllerBase
         catch (DbUpdateConcurrencyException)
         {
             if (!PublisherExists(id))
-            {
                 return NotFound();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
 
         return NoContent();
@@ -84,10 +73,7 @@ public class PublisherController : ControllerBase
     public async Task<IActionResult> DeletePublisher(int id)
     {
         var publisher = await _context.Publishers.FindAsync(id);
-        if (publisher == null)
-        {
-            return NotFound();
-        }
+        if (publisher == null) return NotFound();
 
         _context.Publishers.Remove(publisher);
         await _context.SaveChangesAsync();

@@ -1,7 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using DataAccessLayer.Data;
 using DataAccessLayer.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookHub.Controllers;
 
@@ -29,10 +29,7 @@ public class BookController : ControllerBase
     {
         var book = await _context.Books.FindAsync(id);
 
-        if (book == null)
-        {
-            return NotFound();
-        }
+        if (book == null) return NotFound();
 
         return book;
     }
@@ -42,10 +39,7 @@ public class BookController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> PutBook(int id, Book book)
     {
-        if (id != book.Id)
-        {
-            return BadRequest();
-        }
+        if (id != book.Id) return BadRequest();
 
         _context.Entry(book).State = EntityState.Modified;
 
@@ -56,13 +50,8 @@ public class BookController : ControllerBase
         catch (DbUpdateConcurrencyException)
         {
             if (!BookExists(id))
-            {
                 return NotFound();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
 
         return NoContent();
@@ -84,10 +73,7 @@ public class BookController : ControllerBase
     public async Task<IActionResult> DeleteBook(int id)
     {
         var book = await _context.Books.FindAsync(id);
-        if (book == null)
-        {
-            return NotFound();
-        }
+        if (book == null) return NotFound();
 
         _context.Books.Remove(book);
         await _context.SaveChangesAsync();
