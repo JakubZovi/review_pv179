@@ -10,5 +10,5 @@ public class Author : BaseEntity
     
     public DateTime DateOfBirth { get; set; }
     
-    public virtual ICollection<Book>? Books { get; set; }
+    public virtual ICollection<Book> Books { get; set; } = null!;
 }

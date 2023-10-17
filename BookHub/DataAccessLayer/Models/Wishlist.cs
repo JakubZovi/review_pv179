@@ -9,7 +9,7 @@ public class Wishlist : BaseEntity
     public int UserId { get; set; }
     
     [ForeignKey(nameof(UserId))]
-    public virtual required User User { get; set; }
+    public virtual User User { get; set; } = null!;
     
-    public List<Book>? Books { get; set; }
+    public virtual ICollection<Book> Books { get; set; } = null!;
 }

@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataAccessLayer.Models;
 
-public class Rating: BaseEntity
+public class Rating : BaseEntity
 {
     public int Stars { get; set; }
     
@@ -11,10 +11,10 @@ public class Rating: BaseEntity
     public int UserId { get; set; }
     
     [ForeignKey(nameof(UserId))]
-    public virtual required User User { get; set; }
+    public virtual User User { get; set; } = null!;
     
     public int BookId { get; set; }
     
-    public virtual Book ?Book { get; set; }
-    
+    [ForeignKey(nameof(BookId))]
+    public virtual Book Book { get; set; } = null!;
 }

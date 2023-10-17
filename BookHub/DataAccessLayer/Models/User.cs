@@ -14,6 +14,6 @@ public class User : BaseEntity
     
     public bool IsAdmin { get; set; }
 
-    public List<Rating> Ratings { get; set; } = new List<Rating>();
-    public List<Purchase> Purchases { get; set; } = new List<Purchase>();
+    public virtual ICollection<Rating> Ratings { get; set; } = null!;
+    public virtual ICollection<Purchase> Purchases { get; set; } = null!;
 }

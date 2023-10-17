@@ -7,7 +7,7 @@ public class Price : BaseEntity
     public int BookId { get; set; }
     
     [ForeignKey(nameof(BookId))]
-    public virtual required Book Book { get; set; }
+    public virtual Book Book { get; set; } = null!;
     
     public decimal PriceValue { get; set; }
     

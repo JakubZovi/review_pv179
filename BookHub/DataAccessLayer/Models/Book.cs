@@ -4,20 +4,20 @@ namespace DataAccessLayer.Models;
 
 public class Book : BaseEntity
 {
-    public ICollection<Author> Author { get; set; }
+    public virtual ICollection<Author> Author { get; set; } = null!;
 
-    public ICollection<Genre> Genres { get; set; }
+    public virtual ICollection<Genre> Genres { get; set; } = null!;
 
-    public ICollection<Price> Prices { get; set; }
+    public virtual ICollection<Price> Prices { get; set; } = null!;
 
-    public ICollection<Wishlist> Wishlist { get; set; }
+    public virtual ICollection<Wishlist> Wishlist { get; set; } = null!;
 
-    public ICollection<Rating> Ratings { get; set; }
+    public virtual ICollection<Rating> Ratings { get; set; } = null!;
 
-    public ICollection<PurchaseBook> PurchaseBooks { get; set; }
+    public virtual ICollection<PurchaseBook>? PurchaseBooks { get; set; }
     public int PublisherId { get; set; }
 
-    [ForeignKey(nameof(PublisherId))] public virtual required Publisher Publisher { get; set; }
+    [ForeignKey(nameof(PublisherId))] public virtual Publisher Publisher { get; set; } = null!;
 
     public required string Name { get; set; }
 
