@@ -5,15 +5,15 @@ namespace DataAccessLayer.Data;
 
 public class BookHubDBContext : DbContext
 {
-    public DbSet<Author> Authors { get; set; }
-    public DbSet<Book> Books { get; set; }
-    public DbSet<Genre> Genres { get; set; }
-    public DbSet<Price> Prices { get; set; }
-    public DbSet<Publisher> Publishers { get; set; }
-    public DbSet<Purchase> Purchases { get; set; }
-    public DbSet<Rating> Ratings { get; set; }
-    public DbSet<User> Users { get; set; }
-    public DbSet<Wishlist> Wishlists { get; set; }
+    public virtual required DbSet<Author> Authors { get; set; }
+    public virtual required DbSet<Book> Books { get; set; }
+    public virtual required DbSet<Genre> Genres { get; set; }
+    public virtual required DbSet<Price> Prices { get; set; }
+    public virtual required DbSet<Publisher> Publishers { get; set; }
+    public virtual required DbSet<Purchase> Purchases { get; set; }
+    public virtual required DbSet<Rating> Ratings { get; set; }
+    public virtual required DbSet<User> Users { get; set; }
+    public virtual required DbSet<Wishlist> Wishlists { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
