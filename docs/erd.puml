@@ -33,13 +33,6 @@ entity Genre {
     Name : varchar(255)
 }
 
-entity Genre_Book {
-    *Id: int
-    BookId: int <<FK>>
-    GenreId: int <<FK>>
-    ---
-}
-
 entity Author {
     *Id : int
     ---
@@ -47,13 +40,6 @@ entity Author {
     LastName : varchar(255)
     DateOfBirth : timestamp
     DateOfDeath : timestamp
-}
-
-entity Book_Author {
-    *Id : int
-    AuthorId : int <<FK>>
-    BookId : int <<FK>>
-    ---
 }
 
 entity Publisher {
@@ -81,13 +67,6 @@ entity Wishlist {
     Name : varchar(255)
 }
 
-entity Wishlist_Book {
-    *Id : int
-    WishlistId : int <<FK>>
-    BookId : int <<FK>>
-    ---
-}
-
 entity User {
     *Id : int
     ---
@@ -109,22 +88,20 @@ entity Purchase {
 
 entity Purchase_Book {
     *Id : int
+    Price: decimal(10, 2)
     ---
     PurchaseId : int <<FK>>
     BookId : int <<FK>>
 }
 
 
-Book ||.o{ Wishlist_Book
-Book ||.left.o{ Genre_Book
+Book }o.o{ Wishlist
+Book }o.left.o{ Genre
 
 Book ||...o{ Price
 
-Book_Author }|.up.|| Book
-Author ||.up.o{ Book_Author
+Author }|...o{ Book
 
-
-Genre_Book }o.left.|| Genre
 
 Publisher ||..o{ Book
 
@@ -132,8 +109,6 @@ User ||..o{ Wishlist
 
 Rating }o..|| Book
 Rating }o..|| User
-
-Wishlist_Book ||.o{ Wishlist
 
 Purchase ||..o{ Purchase_Book
 Purchase }o..|| User
