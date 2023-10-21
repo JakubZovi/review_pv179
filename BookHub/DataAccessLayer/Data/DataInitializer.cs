@@ -21,14 +21,54 @@ public static class DataInitializer
         // Many-to-many relationships
         SeedBookGenre(modelBuilder);
         SeedBookAuthor(modelBuilder);
-        SeedBookPrice(modelBuilder);
-        SeedBookRating(modelBuilder);
         SeedBookWishlist(modelBuilder);
     }
 
 
     private static void SeedAuthor(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Author>().HasData(
+            new Author
+            {
+                Id = 1,
+                FirstName = "J. R. R.",
+                LastName = "Tolkien",
+                DateOfBirth = new DateTime(1892, 1, 3),
+                DateOfDeath = new DateTime(1973, 9, 2)
+            },
+            new Author
+            {
+                Id = 2,
+                FirstName = "Douglas",
+                LastName = "Adams",
+                DateOfBirth = new DateTime(1952, 3, 11),
+                DateOfDeath = new DateTime(2001, 5, 11)
+            },
+            new Author
+            {
+                Id = 3,
+                FirstName = "Cal",
+                LastName = "Newport",
+                DateOfBirth = new DateTime(1982, 6, 23),
+                DateOfDeath = null
+            },
+            new Author
+            {
+                Id = 4,
+                FirstName = "Peter",
+                LastName = "Wohlleben",
+                DateOfBirth = new DateTime(1964, 6, 29),
+                DateOfDeath = null
+            },
+            new Author
+            {
+                Id = 5,
+                FirstName = "Frank",
+                LastName = "Herbert",
+                DateOfBirth = new DateTime(1920, 10, 8),
+                DateOfDeath = new DateTime(1986, 2, 11)
+            }
+        );
     }
 
     private static void SeedBook(ModelBuilder modelBuilder)
@@ -46,7 +86,7 @@ public static class DataInitializer
             },
             new Book
             {
-                Id = 42,
+                Id = 2,
                 PublisherId = 2,
                 Name = "Hitchhiker's Guide to the Galaxy",
                 Isbn = "978-0-330-25864-0",
@@ -73,6 +113,46 @@ public static class DataInitializer
                 Description =
                     "Hidden Life of Trees: What They Feel, How They Communicate: Discoveries from a Secret World is a 2015 book by Peter Wohlleben, published in English by Greystone Books in 2016. The book argues that trees are social beings.",
                 PublicationDate = new DateTime(2015, 9, 13)
+            },
+            new Book
+            {
+                Id = 5,
+                PublisherId = 1,
+                Name = "Dune",
+                Isbn = "978-0-399-15522-4",
+                Description =
+                    "Dune is a science fiction novel by Frank Herbert, published in 1965. It is the first novel in the Dune series and explores themes of politics, religion, and ecology on the desert planet of Arrakis.",
+                PublicationDate = new DateTime(1965, 8, 1)
+            },
+            new Book
+            {
+                Id = 6,
+                PublisherId = 1,
+                Name = "Dune Messiah",
+                Isbn = "978-0-441-17273-9",
+                Description =
+                    "Dune Messiah is the second novel in the Dune series by Frank Herbert, published in 1969. It continues the story of Paul Atreides as he navigates the complex politics and power struggles of the Dune universe.",
+                PublicationDate = new DateTime(1969, 2, 1)
+            },
+            new Book
+            {
+                Id = 7,
+                PublisherId = 1,
+                Name = "Children of Dune",
+                Isbn = "978-0-441-17274-6",
+                Description =
+                    "Children of Dune is the third novel in the Dune series by Frank Herbert, published in 1976. It follows the continuing story of the Atreides family and the challenges they face on Arrakis.",
+                PublicationDate = new DateTime(1976, 4, 1)
+            },
+            new Book
+            {
+                Id = 8,
+                PublisherId = 1,
+                Name = "God Emperor of Dune",
+                Isbn = "978-0-441-17275-3",
+                Description =
+                    "God Emperor of Dune is the fourth novel in the Dune series by Frank Herbert, published in 1981. It takes place 3,500 years after the events of the original trilogy and explores the rule of Leto II.",
+                PublicationDate = new DateTime(1981, 6, 1)
             }
         );
     }
@@ -171,6 +251,42 @@ public static class DataInitializer
 
     private static void SeedPrice(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Price>()
+            .HasData(
+                new Price
+                {
+                    Id = 1,
+                    BookId = 1, 
+                    PriceValue = 9.99m,
+                    Currency = "USD",
+                    Date = new DateTime(2023, 10, 20)
+                },
+                new Price
+                {
+                    Id = 2,
+                    BookId = 2,
+                    PriceValue = 12.99m,
+                    Currency = "EUR",
+                    Date = new DateTime(2023, 10, 21)
+                },
+                new Price
+                {
+                    Id = 3,
+                    BookId = 3,
+                    PriceValue = 8.49m,
+                    Currency = "GBP",
+                    Date = new DateTime(2023, 10, 22)
+                },
+                new Price
+                {
+                    Id = 4,
+                    BookId = 4,
+                    PriceValue = 14.95m,
+                    Currency = "USD",
+                    Date = new DateTime(2023, 10, 23)
+                }
+            );
+
     }
 
     private static void SeedPublisher(ModelBuilder modelBuilder)
@@ -213,14 +329,140 @@ public static class DataInitializer
 
     private static void SeedRating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Rating>().HasData(
+            new Rating
+            {
+                Id = 1,
+                Stars = 4,
+                Review = "Enjoyed the book!",
+                UserId = 1,
+                BookId = 1,
+            },
+            new Rating
+            {
+                Id = 2,
+                Stars = 5,
+                Review = "Excellent read!",
+                UserId = 2,
+                BookId = 2,
+            },
+            new Rating
+            {
+                Id = 3,
+                Stars = 3,
+                Review = "Not bad, but could be better.",
+                UserId = 1,
+                BookId = 3,
+            },
+            new Rating
+            {
+                Id = 4,
+                Stars = 5,
+                Review = "Outstanding!",
+                UserId = 3, 
+                BookId = 4, 
+            },
+            new Rating
+            {
+                Id = 5,
+                Stars = 4,
+                Review = "A solid book.",
+                UserId = 1,
+                BookId = 1,
+            }
+        );
     }
 
     private static void SeedUser(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<User>().HasData(
+            new User
+            {
+                Id = 1,
+                FirstName = "John",
+                LastName = "Doe",
+                Gender = "Male",
+                Email = "john.doe@example.com",
+                PasswordHash = "YourPasswordHash1", // Store the actual password hash
+                IsAdmin = false
+            },
+            new User
+            {
+                Id = 2,
+                FirstName = "Jane",
+                LastName = "Smith",
+                Gender = "Female",
+                Email = "jane.smith@example.com",
+                PasswordHash = "YourPasswordHash2", // Store the actual password hash
+                IsAdmin = true
+            },
+            new User
+            {
+                Id = 3,
+                FirstName = "Alice",
+                LastName = "Johnson",
+                Gender = "Female",
+                Email = "alice.johnson@example.com",
+                PasswordHash = "YourPasswordHash3", // Store the actual password hash
+                IsAdmin = false
+            },
+            new User
+            {
+                Id = 4,
+                FirstName = "Bob",
+                LastName = "Brown",
+                Gender = "Male",
+                Email = "bob.brown@example.com",
+                PasswordHash = "YourPasswordHash4", // Store the actual password hash
+                IsAdmin = false
+            },
+            new User
+            {
+                Id = 5,
+                FirstName = "Ella",
+                LastName = "Davis",
+                Gender = "Female",
+                Email = "ella.davis@example.com",
+                PasswordHash = "YourPasswordHash5", // Store the actual password hash
+                IsAdmin = false
+            }
+            // Add more User entities as needed
+        );
     }
 
     private static void SeedWishlist(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Wishlist>().HasData(
+            new Wishlist
+            {
+                Id = 1,
+                Name = "Science Fiction Books",
+                UserId = 1, // Associate the wishlist with a user (adjust the UserId as needed)
+            },
+            new Wishlist
+            {
+                Id = 2,
+                Name = "Fantasy Novels",
+                UserId = 2, // Associate the wishlist with a different user (adjust the UserId as needed)
+            },
+            new Wishlist
+            {
+                Id = 3,
+                Name = "Mystery Novels",
+                UserId = 1, // Associate the wishlist with the same user or another user (adjust the UserId as needed)
+            },
+            new Wishlist
+            {
+                Id = 4,
+                Name = "Classic Literature",
+                UserId = 3, // Associate the wishlist with a different user (adjust the UserId as needed)
+            },
+            new Wishlist
+            {
+                Id = 5,
+                Name = "Biographies",
+                UserId = 2, // Associate the wishlist with the same user or another user (adjust the UserId as needed)
+            });
     }
 
     private static void SeedBookGenre(ModelBuilder modelBuilder)
@@ -231,8 +473,8 @@ public static class DataInitializer
             .UsingEntity(j => j.HasData(
                 new { BooksId = 1, GenresId = 1 },
                 new { BooksId = 1, GenresId = 17 },
-                new { BooksId = 42, GenresId = 2 },
-                new { BooksId = 42, GenresId = 17 },
+                new { BooksId = 2, GenresId = 2 },
+                new { BooksId = 2, GenresId = 17 },
                 new { BooksId = 3, GenresId = 11 },
                 new { BooksId = 3, GenresId = 16 },
                 new { BooksId = 4, GenresId = 16 }
@@ -241,17 +483,32 @@ public static class DataInitializer
 
     private static void SeedBookWishlist(ModelBuilder modelBuilder)
     {
-    }
-
-    private static void SeedBookRating(ModelBuilder modelBuilder)
-    {
-    }
-
-    private static void SeedBookPrice(ModelBuilder modelBuilder)
-    {
+        modelBuilder.Entity<Book>()
+            .HasMany(book => book.Wishlist)
+            .WithMany(wishlist =>  wishlist.Books)
+            .UsingEntity(j => j.HasData(
+                new { BooksId = 5, WishlistId = 1 },
+                new { BooksId = 6, WishlistId = 1 },
+                new { BooksId = 7, WishlistId = 1 },
+                new { BooksId = 8, WishlistId = 1 },
+                new { BooksId = 1, WishlistId = 2 }
+            ));
     }
 
     private static void SeedBookAuthor(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Book>()
+            .HasMany(book => book.Author)
+            .WithMany(author =>  author.Books)
+            .UsingEntity(j => j.HasData(
+                new { BooksId = 1, AuthorId = 1 },
+                new { BooksId = 2, AuthorId = 2 },
+                new { BooksId = 3, AuthorId = 3 },
+                new { BooksId = 4, AuthorId = 4 },
+                new { BooksId = 5, AuthorId = 5 },
+                new { BooksId = 6, AuthorId = 5 },
+                new { BooksId = 7, AuthorId = 5 },
+                new { BooksId = 8, AuthorId = 5 }
+            ));
     }
 }
