@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 namespace BookHub.Controllers;
 
+[Route("api/[controller]")]
+[ApiController]
 public class PriceController : ControllerBase
 {
     private readonly BookHubDbContext _context;

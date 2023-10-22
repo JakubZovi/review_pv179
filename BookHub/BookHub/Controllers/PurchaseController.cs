@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookHub.Controllers;
 
+[Route("api/[controller]")]
+[ApiController]
 public class PurchaseController : ControllerBase
 {
     private readonly BookHubDbContext _context;
