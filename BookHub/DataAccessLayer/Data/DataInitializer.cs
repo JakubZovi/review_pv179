@@ -67,6 +67,46 @@ public static class DataInitializer
                 LastName = "Herbert",
                 DateOfBirth = new DateTime(1920, 10, 8),
                 DateOfDeath = new DateTime(1986, 2, 11)
+            },
+            new Author
+            {
+                Id = 6,
+                FirstName = "Aldous",
+                LastName = "Huxley",
+                DateOfBirth = new DateTime(1894, 7, 26),
+                DateOfDeath = new DateTime(1963, 11, 22)
+            },
+            new Author
+            {
+                Id = 7,
+                FirstName = "George",
+                LastName = "Orwell",
+                DateOfBirth = new DateTime(1903, 6, 25),
+                DateOfDeath = new DateTime(1950, 1, 21)
+            },
+            new Author
+            {
+                Id = 8,
+                FirstName = "Ernest",
+                LastName = "Hemingway",
+                DateOfBirth = new DateTime(1899, 7, 21),
+                DateOfDeath = new DateTime(1961, 7, 2)
+            },
+            new Author
+            {
+                Id = 9,
+                FirstName = "F. Scott",
+                LastName = "Fitzgerald",
+                DateOfBirth = new DateTime(1896, 9, 24),
+                DateOfDeath = new DateTime(1940, 12, 21)
+            },
+            new Author
+            {
+                Id = 10,
+                FirstName = "Isaac",
+                LastName = "Asimov",
+                DateOfBirth = new DateTime(1920, 1, 2),
+                DateOfDeath = new DateTime(1992, 4, 6)
             }
         );
     }
@@ -153,6 +193,96 @@ public static class DataInitializer
                 Description =
                     "God Emperor of Dune is the fourth novel in the Dune series by Frank Herbert, published in 1981. It takes place 3,500 years after the events of the original trilogy and explores the rule of Leto II.",
                 PublicationDate = new DateTime(1981, 6, 1)
+            },
+            new Book
+            {
+                Id = 9,
+                PublisherId = 1,
+                Name = "Heretics of Dune",
+                Isbn = "978-0-441-17276-0",
+                Description =
+                    "Heretics of Dune is the fifth novel in the Dune series by Frank Herbert, published in 1984. It takes place 1,500 years after the events of God Emperor of Dune and explores the conflict between the Bene Gesserit and the Honored Matres.",
+                PublicationDate = new DateTime(1984, 8, 1)
+            },
+            new Book
+            {
+                Id = 10,
+                PublisherId = 1,
+                Name = "Chapterhouse: Dune",
+                Isbn = "978-0-441-17277-7",
+                Description =
+                    "Chapterhouse: Dune is the sixth novel in the Dune series by Frank Herbert, published in 1985. It takes place 1,500 years after the events of Heretics of Dune and explores the conflict between the Bene Gesserit and the Honored Matres.",
+                PublicationDate = new DateTime(1985, 2, 1)
+            },
+            new Book
+            {
+                Id = 11,
+                PublisherId = 1,
+                Name = "The Fellowship of the Ring",
+                Isbn = "978-0-618-05799-2",
+                Description =
+                    "The Fellowship of the Ring is the first novel in J. R. R. Tolkien's The Lord of the Rings trilogy. It was originally published in 1954 and has since been adapted into a film trilogy, a television series, and a video game.",
+                PublicationDate = new DateTime(1954, 7, 29)
+            },
+            new Book
+            {
+                Id = 12,
+                PublisherId = 1,
+                Name = "The Two Towers",
+                Isbn = "978-0-618-05799-2",
+                Description =
+                    "The Two Towers is the second novel in J. R. R. Tolkien's The Lord of the Rings trilogy. It was originally published in 1954 and has since been adapted into a film trilogy, a television series, and a video game.",
+                PublicationDate = new DateTime(1954, 11, 11)
+            },
+            new Book
+            {
+                Id = 13,
+                PublisherId = 1,
+                Name = "The Return of the King",
+                Isbn = "978-0-618-05799-2",
+                Description =
+                    "The Return of the King is the third novel in J. R. R. Tolkien's The Lord of the Rings trilogy. It was originally published in 1955 and has since been adapted into a film trilogy, a television series, and a video game.",
+                PublicationDate = new DateTime(1955, 10, 20)
+            },
+            new Book
+            {
+                Id = 14,
+                PublisherId = 1,
+                Name = "The Great Gatsby",
+                Isbn = "978-0-618-05799-2",
+                Description =
+                    "The Great Gatsby is a 1925 novel by American author F. Scott Fitzgerald. It was originally published by Charles Scribner's Sons and has since been adapted into a film, a television series, and a video game.",
+                PublicationDate = new DateTime(1925, 4, 10)
+            },
+            new Book
+            {
+                Id = 15,
+                PublisherId = 1,
+                Name = "Brave New World",
+                Isbn = "978-0-618-05799-2",
+                Description =
+                    "Brave New World is a 1932 novel by English author Aldous Huxley. It was originally published by Chatto & Windus and has since been adapted into a film, a television series, and a video game.",
+                PublicationDate = new DateTime(1932, 1, 1)
+            },
+            new Book
+            {
+                Id = 16,
+                PublisherId = 1,
+                Name = "1984",
+                Isbn = "978-0-618-05799-2",
+                Description =
+                    "1984 is a 1949 novel by English author George Orwell. It was originally published by Secker & Warburg and has since been adapted into a film, a television series, and a video game.",
+                PublicationDate = new DateTime(1949, 6, 8)
+            },
+            new Book
+            {
+                Id = 17,
+                PublisherId = 1,
+                Name = "Animal Farm",
+                Isbn = "978-0-618-05799-2",
+                Description =
+                    "Animal Farm is a 1945 novel by English author George Orwell. It was originally published by Secker & Warburg and has since been adapted into a film, a television series, and a video game.",
+                PublicationDate = new DateTime(1945, 8, 17)
             }
         );
     }
@@ -321,6 +451,7 @@ public static class DataInitializer
 
     private static void SeedPurchase(ModelBuilder modelBuilder)
     {
+        
     }
 
     private static void SeedPurchaseBook(ModelBuilder modelBuilder)
