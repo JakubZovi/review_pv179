@@ -12,8 +12,8 @@ public static class DataInitializer
         SeedGenre(modelBuilder);
         SeedPrice(modelBuilder);
         SeedPublisher(modelBuilder);
-        SeedPurchase(modelBuilder);
         SeedPurchaseBook(modelBuilder);
+        SeedPurchase(modelBuilder);
         SeedRating(modelBuilder);
         SeedUser(modelBuilder);
         SeedWishlist(modelBuilder);
@@ -386,7 +386,7 @@ public static class DataInitializer
                 new Price
                 {
                     Id = 1,
-                    BookId = 1, 
+                    BookId = 1,
                     PriceValue = 9.99m,
                     Currency = "USD",
                     Date = new DateTime(2023, 10, 20)
@@ -416,7 +416,6 @@ public static class DataInitializer
                     Date = new DateTime(2023, 10, 23)
                 }
             );
-
     }
 
     private static void SeedPublisher(ModelBuilder modelBuilder)
@@ -451,11 +450,89 @@ public static class DataInitializer
 
     private static void SeedPurchase(ModelBuilder modelBuilder)
     {
-        
+        modelBuilder.Entity<Purchase>()
+            .HasData(
+                new Purchase
+                {
+                    Id = 1,
+                    UserId = 1,
+                    Date = new DateTime(2021, 10, 20)
+                },
+                new Purchase
+                {
+                    Id = 2,
+                    UserId = 2,
+                    Date = new DateTime(2021, 10, 21)
+                },
+                new Purchase
+                {
+                    Id = 3,
+                    UserId = 3,
+                    Date = new DateTime(2021, 10, 22)
+                },
+                new Purchase
+                {
+                    Id = 4,
+                    UserId = 4,
+                    Date = new DateTime(2021, 10, 23)
+                }
+            );
     }
 
     private static void SeedPurchaseBook(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<PurchaseBook>()
+            .HasData(
+                new PurchaseBook
+                {
+                    Id = 1,
+                    BookId = 1,
+                    PurchaseId = 1,
+                    Price = 9.99m
+                },
+                new PurchaseBook
+                {
+                    Id = 2,
+                    BookId = 2,
+                    PurchaseId = 1,
+                    Price = 9.99m
+                },
+                new PurchaseBook
+                {
+                    Id = 3,
+                    BookId = 2,
+                    PurchaseId = 2,
+                    Price = 12.99m
+                },
+                new PurchaseBook
+                {
+                    Id = 4,
+                    BookId = 3,
+                    PurchaseId = 3,
+                    Price = 8.49m
+                },
+                new PurchaseBook
+                {
+                    Id = 5,
+                    BookId = 4,
+                    PurchaseId = 4,
+                    Price = 14.95m
+                },
+                new PurchaseBook
+                {
+                    Id = 6,
+                    BookId = 3,
+                    PurchaseId = 1,
+                    Price = 8.49m
+                },
+                new PurchaseBook
+                {
+                    Id = 7,
+                    BookId = 4,
+                    PurchaseId = 1,
+                    Price = 14.95m
+                }
+            );
     }
 
     private static void SeedRating(ModelBuilder modelBuilder)
@@ -490,8 +567,8 @@ public static class DataInitializer
                 Id = 4,
                 Stars = 5,
                 Review = "Outstanding!",
-                UserId = 3, 
-                BookId = 4, 
+                UserId = 3,
+                BookId = 4,
             },
             new Rating
             {
@@ -616,7 +693,7 @@ public static class DataInitializer
     {
         modelBuilder.Entity<Book>()
             .HasMany(book => book.Wishlist)
-            .WithMany(wishlist =>  wishlist.Books)
+            .WithMany(wishlist => wishlist.Books)
             .UsingEntity(j => j.HasData(
                 new { BooksId = 5, WishlistId = 1 },
                 new { BooksId = 6, WishlistId = 1 },
@@ -630,7 +707,7 @@ public static class DataInitializer
     {
         modelBuilder.Entity<Book>()
             .HasMany(book => book.Author)
-            .WithMany(author =>  author.Books)
+            .WithMany(author => author.Books)
             .UsingEntity(j => j.HasData(
                 new { BooksId = 1, AuthorId = 1 },
                 new { BooksId = 2, AuthorId = 2 },
